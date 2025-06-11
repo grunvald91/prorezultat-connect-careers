@@ -17,7 +17,16 @@ const HeroSection = () => {
       
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
+          {/* User's Photo at the beginning */}
+          <div className="mb-8 flex justify-center">
+            <img 
+              src="/lovable-uploads/957736ba-ac5f-4125-964e-b919827e18ab.png"
+              alt="Руководитель PROREZULTAT"
+              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white/30 shadow-lg"
+            />
+          </div>
+          
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
             PROREZULTAT
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-white/95 font-light drop-shadow-md">
