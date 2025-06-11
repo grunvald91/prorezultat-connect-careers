@@ -12,7 +12,7 @@ const HeroSection = () => {
           alt="Профессиональная команда" 
           className="w-full h-full object-cover opacity-20"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-soft-blue/70 to-light-lavender/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-soft-blue/80 to-light-lavender/70"></div>
       </div>
       
       <div className="container mx-auto px-6 text-center relative z-10">
