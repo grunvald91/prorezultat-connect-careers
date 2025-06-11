@@ -1,36 +1,66 @@
 
+import { MessageCircle, Phone } from "lucide-react";
+
 const Footer = () => {
   return (
-    <footer className="py-12 bg-foreground text-background">
+    <footer className="py-12 bg-primary text-primary-foreground">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-2xl font-bold mb-4">PROREZULTAT</h3>
-            <p className="text-background/80">
-              Your trusted partner in talent acquisition and HR excellence.
+            <p className="text-primary-foreground/80">
+              Ваш надежный партнер в привлечении талантов и HR-совершенстве.
             </p>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-background/80">
-              <li>Recruitment</li>
-              <li>Staff Assessment & Audit</li>
-              <li>HR Process Support</li>
+            <h4 className="text-lg font-semibold mb-4">Услуги</h4>
+            <ul className="space-y-2 text-primary-foreground/80">
+              <li>Рекрутинг</li>
+              <li>Оценка и аудит персонала</li>
+              <li>Поддержка HR-процессов</li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact</h4>
-            <div className="space-y-2 text-background/80">
+            <h4 className="text-lg font-semibold mb-4">Контакты</h4>
+            <div className="space-y-2 text-primary-foreground/80">
               <p>Email: info@prorezultat.com</p>
-              <p>Phone: +1 (555) 123-4567</p>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                <a href="tel:+79533120433" className="hover:text-accent transition-colors">
+                  +7 953 312-04-33
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Социальные сети</h4>
+            <div className="space-y-2">
+              <a 
+                href="https://t.me/prorezultat_hr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Telegram
+              </a>
+              <a 
+                href="https://vk.com/pro.rezultat" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary-foreground/80 hover:text-accent transition-colors block"
+              >
+                VKontakte
+              </a>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
-          <p>&copy; 2024 PROREZULTAT. All rights reserved.</p>
+        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
+          <p>&copy; 2024 PROREZULTAT. Все права защищены.</p>
         </div>
       </div>
     </footer>

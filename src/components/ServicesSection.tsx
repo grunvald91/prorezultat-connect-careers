@@ -5,31 +5,34 @@ import { Search, FileText, LayoutDashboard } from "lucide-react";
 const services = [
   {
     icon: Search,
-    title: "Recruitment",
-    description: "Comprehensive talent acquisition services tailored to your specific needs, from executive search to volume hiring."
+    title: "Рекрутинг",
+    description: "Комплексные услуги по привлечению талантов, адаптированные под ваши конкретные потребности, от поиска руководителей до массового найма.",
+    bgColor: "bg-soft-green/20"
   },
   {
     icon: FileText,
-    title: "Staff Assessment & Audit",
-    description: "In-depth evaluation of your current team's capabilities and organizational structure to optimize performance."
+    title: "Оценка и аудит персонала",
+    description: "Глубокая оценка возможностей вашей текущей команды и организационной структуры для оптимизации производительности.",
+    bgColor: "bg-light-lavender/30"
   },
   {
     icon: LayoutDashboard,
-    title: "HR Process Support",
-    description: "Strategic HR consulting to streamline your people processes and build sustainable talent management systems."
+    title: "Поддержка HR-процессов",
+    description: "Стратегическое HR-консультирование для оптимизации ваших кадровых процессов и создания устойчивых систем управления талантами.",
+    bgColor: "bg-warm-salmon/20"
   }
 ];
 
 const ServicesSection = () => {
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-gradient-to-br from-soft-blue via-background to-light-lavender">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Our Services
+            Наши услуги
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive talent solutions designed to accelerate your business success
+            Комплексные решения в области талантов, направленные на ускорение успеха вашего бизнеса
           </p>
         </div>
         
@@ -37,7 +40,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 bg-card/50 backdrop-blur-sm"
+              className={`hover:shadow-lg transition-all duration-300 hover:scale-105 border-0 ${service.bgColor} backdrop-blur-sm`}
             >
               <CardHeader className="text-center pb-4">
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
