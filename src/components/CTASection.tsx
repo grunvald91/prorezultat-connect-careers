@@ -1,7 +1,11 @@
 
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import ContactForm from "./ContactForm";
 
 const CTASection = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <section className="py-20 warm-gradient text-white">
       <div className="container mx-auto px-6 text-center">
@@ -12,23 +16,19 @@ const CTASection = () => {
           <p className="text-xl mb-8 text-white/90">
             Давайте обсудим ваши потребности в талантах и создадим индивидуальное решение, которое приносит результаты
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex justify-center">
             <Button 
               size="lg" 
+              onClick={() => setIsFormOpen(true)}
               className="bg-white text-primary hover:bg-cream px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
             >
               Заполнить бриф
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-white text-white hover:bg-white hover:text-primary px-8 py-3 text-lg font-medium transition-all duration-300 backdrop-blur-sm"
-            >
-              Запланировать звонок
-            </Button>
           </div>
         </div>
       </div>
+      
+      <ContactForm isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
     </section>
   );
 };
