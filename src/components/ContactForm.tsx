@@ -49,7 +49,7 @@ ${formData.email ? `📧 Email: ${formData.email}` : ''}
 
 ⏰ Время: ${new Date().toLocaleString('ru-RU')}`;
 
-      const response = await fetch(`https://api.telegram.org/bot7839442507:AAF-xKqQBD8X8kZDcK8JHjYPhF6-EWBa9zo/sendMessage`, {
+      const response = await fetch(`https://api.telegram.org/bot7618492207:AAFUsOIBDpSAp3a0lVtJPPAOD8R5Sfxm6ZQ/sendMessage`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
