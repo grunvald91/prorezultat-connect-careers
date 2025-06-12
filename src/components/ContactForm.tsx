@@ -49,10 +49,6 @@ ${formData.email ? `📧 Email: ${formData.email}` : ''}
 
 ⏰ Время: ${new Date().toLocaleString('ru-RU')}`;
 
-      const telegramUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN || ''}/sendMessage`;
-      
-      // Поскольку мы не можем использовать серверные переменные окружения в frontend,
-      // отправляем запрос через публичный API Telegram
       const response = await fetch(`https://api.telegram.org/bot7839442507:AAF-xKqQBD8X8kZDcK8JHjYPhF6-EWBa9zo/sendMessage`, {
         method: 'POST',
         headers: {

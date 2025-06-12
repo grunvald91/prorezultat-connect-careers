@@ -33,7 +33,7 @@ const HeroSection = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
             PROREZULTAT
           </h1>
-          <div className="bg-black/30 backdrop-blur-sm rounded-lg p-6 mb-8">
+          <div className="bg-black/20 backdrop-blur-sm rounded-lg p-6 mb-8">
             <p className="text-xl md:text-2xl text-white font-light">
               Люди — это то, что имеет значение. Мы поможем вам найти правильных.
             </p>
