@@ -40,10 +40,10 @@ const HeroSection = () => {
           </div>
           
           {/* Contact Info */}
-          <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center text-white/90">
+          <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a 
               href="tel:+79533120433" 
-              className="flex items-center gap-2 hover:text-accent transition-colors"
+              className="flex items-center gap-2 text-primary bg-white/90 hover:bg-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-medium"
             >
               <Phone className="w-5 h-5" />
               +7 953 312-04-33
@@ -53,7 +53,7 @@ const HeroSection = () => {
                 href="https://t.me/prorezultat_hr" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-accent transition-colors"
+                className="flex items-center gap-2 text-primary bg-white/90 hover:bg-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-medium"
               >
                 <MessageCircle className="w-5 h-5" />
                 Telegram
@@ -62,7 +62,7 @@ const HeroSection = () => {
                 href="https://vk.com/pro.rezultat" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-accent transition-colors"
+                className="text-primary bg-white/90 hover:bg-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-medium"
               >
                 VK
               </a>
