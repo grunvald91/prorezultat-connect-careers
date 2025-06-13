@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -41,38 +42,58 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     setIsSubmitting(true);
 
     try {
-      const message = `🔔 Новая заявка с сайта PROREZULTAT
+      console.log('Submitting form data:', formData);
 
-📱 Телефон: ${formData.phone}
-${formData.email ? `📧 Email: ${formData.email}` : ''}
-❓ Вопрос: ${formData.question}
+      // Сохраняем заявку в базу данных
+      const { data: contactRequest, error: dbError } = await supabase
+        .from('contact_requests')
+        .insert([
+          {
+            phone: formData.phone,
+            email: formData.email || null,
+            question: formData.question,
+          }
+        ])
+        .select()
+        .single();
 
-⏰ Время: ${new Date().toLocaleString('ru-RU')}`;
-
-      const response = await fetch(`https://api.telegram.org/bot7618492207:AAFUsOIBDpSAp3a0lVtJPPAOD8R5Sfxm6ZQ/sendMessage`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          chat_id: '437862772',
-          text: message,
-          parse_mode: 'HTML'
-        }),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Заявка отправлена!",
-          description: "Мы свяжемся с вами в ближайшее время",
-        });
-        setFormData({ phone: "", email: "", question: "" });
-        onClose();
-      } else {
-        throw new Error('Ошибка отправки');
+      if (dbError) {
+        console.error('Database error:', dbError);
+        throw new Error('Ошибка сохранения в базу данных');
       }
+
+      console.log('Contact request saved:', contactRequest);
+
+      // Отправляем уведомление в Telegram через Edge Function
+      const { data: telegramResult, error: telegramError } = await supabase.functions.invoke(
+        'send-telegram-notification',
+        {
+          body: {
+            requestId: contactRequest.id,
+            phone: formData.phone,
+            email: formData.email,
+            question: formData.question,
+          }
+        }
+      );
+
+      if (telegramError) {
+        console.error('Telegram notification error:', telegramError);
+        // Не показываем ошибку пользователю, так как заявка уже сохранена
+      }
+
+      console.log('Telegram notification result:', telegramResult);
+
+      toast({
+        title: "Заявка отправлена!",
+        description: "Мы свяжемся с вами в ближайшее время",
+      });
+      
+      setFormData({ phone: "", email: "", question: "" });
+      onClose();
+
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error submitting form:', error);
       toast({
         title: "Ошибка отправки",
         description: "Попробуйте еще раз или свяжитесь с нами напрямую",
