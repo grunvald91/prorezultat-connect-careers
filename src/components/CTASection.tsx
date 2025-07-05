@@ -11,10 +11,10 @@ const CTASection = () => {
       <div className="container mx-auto px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Готовы найти ваше идеальное соответствие?
+            Готовы ускорить бизнес?
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            Давайте обсудим ваши потребности в талантах и создадим индивидуальное решение, которое приносит результаты
+            Давайте обсудим ваш запрос и подберём оптимальное решение, которое принесет хороший результат
           </p>
           <div className="flex justify-center">
             <Button 

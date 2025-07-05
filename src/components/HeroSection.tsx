@@ -24,49 +24,33 @@ const HeroSection = () => {
           {/* User's Photo at the beginning */}
           <div className="mb-8 flex justify-center">
             <img 
-              src="/lovable-uploads/957736ba-ac5f-4125-964e-b919827e18ab.png"
+              src="/lovable-uploads/86617c4c-bc79-467f-92f4-da07c0dacf6c.png"
               alt="Руководитель PROREZULTAT"
               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white/30 shadow-lg"
             />
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
-            PROREZULTAT
+            HR ДЛЯ БИЗНЕСА
           </h1>
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white drop-shadow-lg">
+            Работа с персоналом под ключ
+          </h2>
           <div className="bg-black/20 backdrop-blur-sm rounded-lg p-6 mb-8">
             <p className="text-xl md:text-2xl text-white font-light">
-              Люди — это то, что имеет значение. Мы поможем вам найти правильных.
+              Увеличиваем прибыль компаний, благодаря эффективной работе с персоналом по всей России
             </p>
           </div>
           
           {/* Contact Info */}
-          <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="mb-8 flex justify-center">
             <a 
-              href="tel:+79533120433" 
+              href="tel:+79998198253" 
               className="flex items-center gap-2 text-primary bg-white/90 hover:bg-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-medium"
             >
               <Phone className="w-5 h-5" />
-              +7 953 312-04-33
+              +7 999 819-82-53
             </a>
-            <div className="flex gap-4">
-              <a 
-                href="https://t.me/prorezultat_hr" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-primary bg-white/90 hover:bg-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-medium"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Telegram
-              </a>
-              <a 
-                href="https://vk.com/pro.rezultat" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-primary bg-white/90 hover:bg-white px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg font-medium"
-              >
-                VK
-              </a>
-            </div>
           </div>
           
           <div className="flex justify-center">

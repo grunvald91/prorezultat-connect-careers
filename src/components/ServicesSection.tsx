@@ -1,12 +1,12 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, FileText, LayoutDashboard } from "lucide-react";
+import { Search, FileText, LayoutDashboard, Users, GraduationCap } from "lucide-react";
 
 const services = [
   {
     icon: Search,
     title: "Рекрутинг",
-    description: "Комплексные услуги по привлечению талантов, адаптированные под ваши конкретные потребности, от поиска руководителей до массового найма.",
+    description: "Услуги по подбору сотрудников, адаптированные под ваши потребности: от массового найма до поиска руководителей",
     bgColor: "bg-soft-green/20"
   },
   {
@@ -18,8 +18,20 @@ const services = [
   {
     icon: LayoutDashboard,
     title: "Поддержка HR-процессов",
-    description: "Стратегическое HR-консультирование для оптимизации ваших кадровых процессов и создания устойчивых систем управления талантами.",
+    description: "HR-консультирование для оптимизации ваших кадровых процессов и создания устойчивых систем управления талантами.",
     bgColor: "bg-warm-salmon/20"
+  },
+  {
+    icon: Users,
+    title: "Стратегические сессии и семинары",
+    description: "Стратегические и оптимизационные мероприятия для построения системы краткосрочного и долгосрочного планирования процессов, выхода компании из кризисной ситуации и запуска новых продуктов",
+    bgColor: "bg-soft-blue/30"
+  },
+  {
+    icon: GraduationCap,
+    title: "Обучение",
+    description: "Индивидуальные и групповые обучения по направлению HR и коммуникаций",
+    bgColor: "bg-cream/40"
   }
 ];
 
@@ -32,11 +44,11 @@ const ServicesSection = () => {
             Наши услуги
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Комплексные решения в области талантов, направленные на ускорение успеха вашего бизнеса
+            Комплексные HR-решения, направленные на ускорение успеха вашего бизнеса
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <Card 
               key={index} 
