@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
@@ -23,6 +24,8 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     phone: "",
     email: "",
     question: "",
+    privacyConsent: false,
+    dataConsent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -30,10 +33,10 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.phone || !formData.question) {
+    if (!formData.phone || !formData.question || !formData.privacyConsent || !formData.dataConsent) {
       toast({
         title: "Ошибка",
-        description: "Пожалуйста, заполните обязательные поля",
+        description: "Пожалуйста, заполните обязательные поля и дайте согласие на обработку данных",
         variant: "destructive",
       });
       return;
@@ -89,7 +92,7 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
         description: "Мы свяжемся с вами в ближайшее время",
       });
       
-      setFormData({ phone: "", email: "", question: "" });
+      setFormData({ phone: "", email: "", question: "", privacyConsent: false, dataConsent: false });
       onClose();
 
     } catch (error) {
@@ -150,6 +153,48 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
               rows={4}
               required
             />
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex items-start space-x-2">
+              <Checkbox 
+                id="privacy-consent" 
+                checked={formData.privacyConsent}
+                onCheckedChange={(checked) => 
+                  setFormData(prev => ({ ...prev, privacyConsent: checked as boolean }))
+                }
+              />
+              <label htmlFor="privacy-consent" className="text-sm text-muted-foreground cursor-pointer">
+                Согласен с{" "}
+                <button 
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent('openPrivacyPolicy'))}
+                  className="text-accent hover:underline"
+                >
+                  политикой конфиденциальности
+                </button>
+              </label>
+            </div>
+            
+            <div className="flex items-start space-x-2">
+              <Checkbox 
+                id="data-consent" 
+                checked={formData.dataConsent}
+                onCheckedChange={(checked) => 
+                  setFormData(prev => ({ ...prev, dataConsent: checked as boolean }))
+                }
+              />
+              <label htmlFor="data-consent" className="text-sm text-muted-foreground cursor-pointer">
+                Согласен на{" "}
+                <button 
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent('openConsentAgreement'))}
+                  className="text-accent hover:underline"
+                >
+                  обработку персональных данных
+                </button>
+              </label>
+            </div>
           </div>
           
           <div className="flex gap-3 pt-4">

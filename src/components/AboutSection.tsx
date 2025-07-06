@@ -17,27 +17,27 @@ const AboutSection = () => {
             <ul className="space-y-3 text-lg text-muted-foreground">
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>выстраиваем HR-процессы с нуля,</span>
+                <span>выстраиваем HR-процессы с нуля</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>подбираем эффективных сотрудников,</span>
+                <span>подбираем эффективных сотрудников</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>обучаем персонал,</span>
+                <span>обучаем персонал</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>помогаем вывести компанию из кризиса,</span>
+                <span>помогаем вывести компанию из кризиса</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>формируем корпоративную культуру,</span>
+                <span>формируем корпоративную культуру</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>подсказываем как сэкономить на HR-процессах.</span>
+                <span>подсказываем как сэкономить на HR-процессах</span>
               </li>
             </ul>
           </div>

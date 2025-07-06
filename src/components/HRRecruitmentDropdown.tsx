@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ChevronDown, User, Calculator, Wrench, Scale, Shield } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -64,7 +65,9 @@ const HRRecruitmentDropdown = () => {
     name: "",
     phone: "",
     email: "",
-    requirements: ""
+    requirements: "",
+    privacyConsent: false,
+    dataConsent: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -98,12 +101,12 @@ const HRRecruitmentDropdown = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedPosition) return;
+    if (!selectedPosition || !formData.privacyConsent || !formData.dataConsent) return;
 
     setIsSubmitting(true);
     
     try {
-      const { error } = await supabase
+      const { data: contactRequest, error } = await supabase
         .from('contact_requests')
         .insert({
           phone: formData.phone,
@@ -112,14 +115,19 @@ const HRRecruitmentDropdown = () => {
 Компания: ${formData.company}
 Имя: ${formData.name}
 Дополнительные требования: ${formData.requirements}`
-        });
+        })
+        .select()
+        .single();
 
       if (error) throw error;
 
       // Отправка уведомления в Telegram
       await supabase.functions.invoke('send-telegram-notification', {
         body: {
-          message: `🔍 Новый запрос на подбор персонала!
+          requestId: contactRequest.id,
+          phone: formData.phone,
+          email: formData.email,
+          question: `🔍 Новый запрос на подбор персонала!
           
 📋 Позиция: ${selectedPosition.title}
 🏢 Компания: ${formData.company}
@@ -132,16 +140,16 @@ const HRRecruitmentDropdown = () => {
 
       toast({
         title: "Заявка отправлена!",
-        description: "Мы свяжемся с вами в ближайшее время для обсуждения стоимости подбора.",
+        description: "Мы свяжемся с вами в ближайшее время для обсуждения стоимости подбора",
       });
 
       setIsDialogOpen(false);
-      setFormData({ company: "", name: "", phone: "", email: "", requirements: "" });
+      setFormData({ company: "", name: "", phone: "", email: "", requirements: "", privacyConsent: false, dataConsent: false });
     } catch (error) {
       console.error('Error:', error);
       toast({
         title: "Ошибка",
-        description: "Не удалось отправить заявку. Попробуйте позже.",
+        description: "Не удалось отправить заявку. Попробуйте позже",
         variant: "destructive",
       });
     } finally {
@@ -245,8 +253,35 @@ const HRRecruitmentDropdown = () => {
                 placeholder="Укажите специфические требования к кандидату..."
               />
             </div>
+            <div className="space-y-4">
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="privacy-consent-hr" 
+                  checked={formData.privacyConsent}
+                  onCheckedChange={(checked) => 
+                    setFormData(prev => ({ ...prev, privacyConsent: checked as boolean }))
+                  }
+                />
+                <label htmlFor="privacy-consent-hr" className="text-sm text-muted-foreground cursor-pointer">
+                  Согласен с политикой конфиденциальности
+                </label>
+              </div>
+              
+              <div className="flex items-start space-x-2">
+                <Checkbox 
+                  id="data-consent-hr" 
+                  checked={formData.dataConsent}
+                  onCheckedChange={(checked) => 
+                    setFormData(prev => ({ ...prev, dataConsent: checked as boolean }))
+                  }
+                />
+                <label htmlFor="data-consent-hr" className="text-sm text-muted-foreground cursor-pointer">
+                  Согласен на обработку персональных данных
+                </label>
+              </div>
+            </div>
             
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button type="submit" className="w-full" disabled={isSubmitting || !formData.privacyConsent || !formData.dataConsent}>
               {isSubmitting ? "Отправка..." : "Узнать стоимость подбора"}
             </Button>
           </form>

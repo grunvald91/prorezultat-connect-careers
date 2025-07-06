@@ -16,7 +16,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Услуги</h4>
             <ul className="space-y-2 text-primary-foreground/80">
-              <li>Рекрутинг</li>
+              <li>Подбор сотрудников</li>
               <li>Оценка и аудит персонала</li>
               <li>Поддержка HR-процессов</li>
               <li>Стратегические сессии и семинары</li>
@@ -66,8 +66,24 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-primary-foreground/60">
-          <p>&copy; 2024 PROREZULTAT. Все права защищены.</p>
+        <div className="border-t border-primary-foreground/20 mt-8 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-primary-foreground/60">&copy; 2024 PROREZULTAT. Все права защищены.</p>
+            <div className="flex gap-6 text-primary-foreground/60">
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent('openPrivacyPolicy'))}
+                className="hover:text-accent transition-colors cursor-pointer"
+              >
+                Политика конфиденциальности
+              </button>
+              <button 
+                onClick={() => window.dispatchEvent(new CustomEvent('openConsentAgreement'))}
+                className="hover:text-accent transition-colors cursor-pointer"
+              >
+                Согласие на обработку данных
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
