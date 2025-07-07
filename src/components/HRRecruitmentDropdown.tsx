@@ -161,11 +161,12 @@ const HRRecruitmentDropdown = () => {
     <div className="relative" ref={dropdownRef}>
       <Button
         variant="outline"
-        className="bg-white/90 backdrop-blur flex items-center gap-2"
+        className="bg-white/90 backdrop-blur flex flex-col items-center gap-1 text-xs sm:text-sm whitespace-normal leading-tight h-auto py-2 px-3"
         onClick={() => setIsOpen(!isOpen)}
       >
-        Подбор сотрудника
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <span>Подбор</span>
+        <span>сотрудника</span>
+        <ChevronDown className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </Button>
 
       {isOpen && (

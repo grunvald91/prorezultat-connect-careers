@@ -7,20 +7,20 @@ const CTASection = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <section className="py-20 warm-gradient text-white">
+    <section className="py-20 bg-gradient-to-br from-accent/20 via-accent/30 to-accent/40 text-foreground">
       <div className="container mx-auto px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Хотите получить бесплатную консультацию?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-foreground/90">
             Давайте обсудим ваш запрос и подберём оптимальное решение, которое принесет хороший результат
           </p>
           <div className="flex justify-center">
             <Button 
               size="lg" 
               onClick={() => setIsFormOpen(true)}
-              className="bg-white text-primary hover:bg-cream px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+              className="bg-white text-primary hover:bg-white/90 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
             >
               Бесплатная консультация
             </Button>

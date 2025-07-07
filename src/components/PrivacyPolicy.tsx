@@ -85,7 +85,7 @@ const PrivacyPolicy = ({ isOpen, onClose }: PrivacyPolicyProps) => {
             <div>
               <h3 className="font-semibold mb-2">12. Контактная информация Оператора</h3>
               <p>Индивидуальный предприниматель Жесон Екатерина Сергеевна</p>
-              <p>Город Москва, E-mail: pro.rezultat@yandex.ru</p>
+              <p>Город Калуга, E-mail: pro.rezultat@yandex.ru</p>
             </div>
 
             <div>
