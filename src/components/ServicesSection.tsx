@@ -7,19 +7,19 @@ const services = [
     icon: Search,
     title: "Подбор сотрудников",
     description: "Услуги по подбору сотрудников, адаптированные под ваши потребности: от массового найма до поиска руководителей",
-    bgColor: "bg-soft-green/20"
+    bgColor: "bg-light-lavender/30"
   },
   {
     icon: FileText,
     title: "Оценка и аудит персонала",
     description: "Глубокая оценка возможностей вашей текущей команды и организационной структуры для оптимизации производительности",
-    bgColor: "bg-light-lavender/30"
+    bgColor: "bg-warm-salmon/20"
   },
   {
     icon: LayoutDashboard,
     title: "Поддержка HR-процессов",
     description: "Консультирование и оптимизация HR-операций для повышения эффективности",
-    bgColor: "bg-warm-salmon/20"
+    bgColor: "bg-soft-green/20"
   },
   {
     icon: Users,

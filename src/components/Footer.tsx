@@ -1,5 +1,5 @@
 
-import { MessageCircle, Phone, Mail } from "lucide-react";
+import { Send, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -51,7 +51,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-primary-foreground/80 hover:text-accent transition-colors"
               >
-                <MessageCircle className="w-5 h-5" />
+                <Send className="w-5 h-5" />
               </a>
               <a 
                 href="https://vk.com/pro.rezultat" 

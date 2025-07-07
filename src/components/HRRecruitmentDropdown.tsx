@@ -161,16 +161,16 @@ const HRRecruitmentDropdown = () => {
     <div className="relative" ref={dropdownRef}>
       <Button
         variant="outline"
-        className="bg-white/90 backdrop-blur flex flex-col items-center gap-1 text-xs sm:text-sm whitespace-normal leading-tight h-auto py-2 px-3"
+        className="bg-muted text-muted-foreground backdrop-blur flex flex-col items-center gap-1 text-xs sm:text-sm whitespace-normal leading-tight h-auto py-2 px-3"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>Подбор</span>
-        <span>сотрудника</span>
+        <span>сотрудников</span>
         <ChevronDown className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </Button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border z-50 max-h-96 overflow-y-auto">
+        <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border z-50 max-h-96 overflow-y-auto sm:left-0 sm:right-auto">
           <div className="p-2">
             {positions.map((position) => (
               <button
