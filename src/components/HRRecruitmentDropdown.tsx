@@ -161,7 +161,9 @@ const HRRecruitmentDropdown = () => {
     <div className="relative" ref={dropdownRef}>
       <Button
         variant="outline"
-        className="bg-white text-foreground backdrop-blur flex flex-col items-center gap-1 text-xs sm:text-sm whitespace-normal leading-tight h-auto py-2 px-3 hover:bg-muted active:bg-muted"
+        className={`backdrop-blur flex flex-col items-center gap-1 text-xs sm:text-sm whitespace-normal leading-tight h-auto py-2 px-3 hover:bg-muted ${
+          isOpen ? 'bg-muted text-muted-foreground' : 'bg-white text-foreground'
+        }`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>Подбор</span>

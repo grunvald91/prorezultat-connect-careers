@@ -13,7 +13,7 @@ const services = [
     icon: FileText,
     title: "Оценка и аудит персонала",
     description: "Глубокая оценка возможностей вашей текущей команды и организационной структуры для оптимизации производительности",
-    bgColor: "bg-warm-salmon/20"
+    bgColor: "bg-warm-salmon/10"
   },
   {
     icon: LayoutDashboard,

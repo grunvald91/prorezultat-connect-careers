@@ -7,7 +7,7 @@ const CTASection = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <section className="py-20 bg-muted text-foreground">
+    <section className="py-20 bg-muted/80 text-foreground">
       <div className="container mx-auto px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
