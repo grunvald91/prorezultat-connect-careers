@@ -8,7 +8,7 @@ const HeroSection = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative bg-muted text-primary-foreground overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative bg-slate-600 text-primary-foreground overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -16,7 +16,7 @@ const HeroSection = () => {
           alt="Профессиональная команда" 
           className="w-full h-full object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-muted"></div>
+        <div className="absolute inset-0 bg-slate-600/95"></div>
       </div>
       
       <div className="container mx-auto px-6 text-center relative z-10">
@@ -58,8 +58,8 @@ const HeroSection = () => {
             <Button 
               size="lg" 
               onClick={() => setIsFormOpen(true)}
-              style={{ background: 'linear-gradient(135deg, #D4AF37, #B8860B, #DAA520)' }}
-              className="text-muted-foreground hover:opacity-90 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0"
+              style={{ background: 'linear-gradient(135deg, #FFD700, #FFA500, #FF8C00)' }}
+              className="text-white hover:opacity-90 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0"
             >
               Оставить заявку
             </Button>
