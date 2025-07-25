@@ -20,7 +20,8 @@ const CTASection = () => {
             <Button 
               size="lg" 
               onClick={() => setIsFormOpen(true)}
-              className="bg-gradient-to-r from-amber-500 to-amber-600 text-muted-foreground hover:from-amber-600 hover:to-amber-700 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #D4AF37, #B8860B, #DAA520)' }}
+              className="text-muted-foreground hover:opacity-90 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0"
             >
               Бесплатная консультация
             </Button>
