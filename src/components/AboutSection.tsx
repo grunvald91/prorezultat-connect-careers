@@ -21,11 +21,11 @@ const AboutSection = () => {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>подбираем эффективных сотрудников</span>
+                <span>разрабатываем систему мотивации и грейдирования</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>обучаем персонал</span>
+                <span>формулируем: миссию, стратегию, ценности, EVP</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
@@ -33,7 +33,7 @@ const AboutSection = () => {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>
-                <span>формируем корпоративную культуру</span>
+                <span>формируем корпоративную культуру и HR-бренд</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary">•</span>

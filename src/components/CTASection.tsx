@@ -20,7 +20,7 @@ const CTASection = () => {
             <Button 
               size="lg" 
               onClick={() => setIsFormOpen(true)}
-              className="bg-accent text-muted-foreground hover:bg-accent/90 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+              className="bg-gradient-to-r from-amber-500 to-amber-600 text-muted-foreground hover:from-amber-600 hover:to-amber-700 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
             >
               Бесплатная консультация
             </Button>

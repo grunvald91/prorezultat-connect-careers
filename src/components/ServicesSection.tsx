@@ -5,20 +5,20 @@ import { Search, FileText, LayoutDashboard, Users, GraduationCap } from "lucide-
 const services = [
   {
     icon: Search,
-    title: "Подбор сотрудников",
-    description: "Услуги по подбору сотрудников, адаптированные под ваши потребности: от массового найма до поиска руководителей",
+    title: "Подбор команды",
+    description: "Услуги по подбору команды, адаптированные под ваши потребности: от массового найма до поиска руководителей",
     bgColor: "bg-light-lavender/15"
   },
   {
     icon: FileText,
     title: "Оценка и аудит персонала",
     description: "Глубокая оценка возможностей вашей текущей команды и организационной структуры для оптимизации производительности",
-    bgColor: "bg-warm-salmon/10"
+    bgColor: "bg-muted/60"
   },
   {
     icon: LayoutDashboard,
-    title: "Поддержка HR-процессов",
-    description: "Консультирование и оптимизация HR-операций для повышения эффективности",
+    title: "Поддержка HR-направления",
+    description: "Консультирование и оптимизация HR-процессов для повышения эффективности",
     bgColor: "bg-soft-green/10"
   },
   {
@@ -30,7 +30,7 @@ const services = [
   {
     icon: GraduationCap,
     title: "Обучение",
-    description: "Индивидуальные и групповые обучения по направлению HR и коммуникации",
+    description: "Индивидуальные и групповые обучения по функции HR и коммуникации",
     bgColor: "bg-cream/40"
   }
 ];

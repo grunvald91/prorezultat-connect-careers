@@ -266,7 +266,7 @@ const HRRecruitmentDropdown = () => {
                   }
                 />
                 <label htmlFor="privacy-consent-hr" className="text-sm text-muted-foreground cursor-pointer">
-                  Согласен с политикой конфиденциальности
+                  Ознакомлен с политикой конфиденциальности
                 </label>
               </div>
               

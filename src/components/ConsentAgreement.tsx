@@ -55,14 +55,14 @@ const ConsentAgreement = ({ isOpen, onClose }: ConsentAgreementProps) => {
             <div>
               <h3 className="font-semibold mb-2">6. Срок действия и отзыв согласия</h3>
               <p>Согласие даётся на срок до достижения целей обработки или до момента его отзыва.</p>
-              <p>Отзыв может быть направлен по электронной почте: pro.rezultat@yandex.ru.</p>
+              <p>Отзыв может быть направлен по электронной почте: prorezultat.info@yandex.ru.</p>
               <p>Отзыв согласия не влияет на законность обработки до его получения.</p>
             </div>
 
             <div>
               <h3 className="font-semibold mb-2">7. Контактная информация Оператора</h3>
               <p>Индивидуальный предприниматель Жесон Екатерина Сергеевна</p>
-              <p>Город Калуга, E-mail: pro.rezultat@yandex.ru</p>
+              <p>Город Калуга, E-mail: prorezultat.info@yandex.ru</p>
             </div>
           </div>
         </ScrollArea>

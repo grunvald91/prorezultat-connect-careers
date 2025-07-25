@@ -29,8 +29,8 @@ const Footer = () => {
             <div className="space-y-2 text-primary-foreground/80">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <a href="mailto:pro.rezultat@yandex.ru" className="hover:text-accent transition-colors">
-                  pro.rezultat@yandex.ru
+                <a href="mailto:prorezultat.info@yandex.ru" className="hover:text-accent transition-colors">
+                  prorezultat.info@yandex.ru
                 </a>
               </div>
               <div className="flex items-center gap-2">

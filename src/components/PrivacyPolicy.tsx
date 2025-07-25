@@ -69,7 +69,7 @@ const PrivacyPolicy = ({ isOpen, onClose }: PrivacyPolicyProps) => {
               <h3 className="font-semibold mb-2">9. Права пользователя</h3>
               <p>— Получение информации о своих данных</p>
               <p>— Требование их уточнения, блокировки или удаления</p>
-              <p>— Отзыв согласия на обработку по e-mail: pro.rezultat@yandex.ru</p>
+              <p>— Отзыв согласия на обработку по e-mail: prorezultat.info@yandex.ru</p>
             </div>
 
             <div>
@@ -85,7 +85,7 @@ const PrivacyPolicy = ({ isOpen, onClose }: PrivacyPolicyProps) => {
             <div>
               <h3 className="font-semibold mb-2">12. Контактная информация Оператора</h3>
               <p>Индивидуальный предприниматель Жесон Екатерина Сергеевна</p>
-              <p>Город Калуга, E-mail: pro.rezultat@yandex.ru</p>
+              <p>Город Калуга, E-mail: prorezultat.info@yandex.ru</p>
             </div>
 
             <div>
