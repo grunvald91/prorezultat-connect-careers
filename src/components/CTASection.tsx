@@ -20,7 +20,7 @@ const CTASection = () => {
             <Button 
               size="lg" 
               onClick={() => setIsFormOpen(true)}
-              style={{ background: 'linear-gradient(135deg, #FFD700, #FFA500, #FF8C00)' }}
+              style={{ background: 'linear-gradient(135deg, #E6C989, #D4AF37, #B8860B)' }}
               className="text-white hover:opacity-90 px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0"
             >
               Бесплатная консультация
