@@ -36,7 +36,7 @@ const WhyUsSection = () => {
               className="flex items-start gap-6 p-6 rounded-lg bg-white/60 backdrop-blur-sm hover:bg-white/80 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <div className="flex-shrink-0">
-                <CheckCircle className="w-8 h-8" style={{ background: 'linear-gradient(135deg, #D4AF37, #B8860B, #8B6914)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundImage: 'linear-gradient(135deg, #D4AF37, #B8860B, #8B6914)' }} />
+                <CheckCircle className="w-8 h-8" style={{ color: '#D4AF37' }} />
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-3 text-foreground">
