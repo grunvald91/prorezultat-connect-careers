@@ -21,7 +21,7 @@ serve(async (req) => {
 
     // Telegram bot configuration
     const BOT_TOKEN = '7618492207:AAFUsOIBDpSAp3a0lVtJPPAOD8R5Sfxm6ZQ';
-    const CHAT_ID = '437862772';
+    const CHAT_IDS = ['437862772', '1749755545'];
 
     const message = `🔔 Новая заявка с сайта PROREZULTAT
 
@@ -34,25 +34,31 @@ ${email ? `📧 Email: ${email}` : ''}
 
     console.log('Sending message to Telegram:', message);
 
-    const telegramResponse = await fetch(
-      `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
-      {
+    // Send to all chat IDs
+    const telegramPromises = CHAT_IDS.map(chatId =>
+      fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          chat_id: CHAT_ID,
+          chat_id: chatId,
           text: message,
           parse_mode: 'HTML'
         }),
-      }
+      })
     );
 
-    const telegramResult = await telegramResponse.json();
-    console.log('Telegram API response:', telegramResult);
+    const telegramResponses = await Promise.all(telegramPromises);
+    const telegramResults = await Promise.all(
+      telegramResponses.map(response => response.json())
+    );
+    
+    console.log('Telegram API responses:', telegramResults);
 
-    if (telegramResponse.ok) {
+    const allSuccessful = telegramResponses.every(response => response.ok);
+
+    if (allSuccessful) {
       // Update the database to mark telegram as sent
       const supabase = createClient(
         'https://fcxfwtkrwvfbnugcwkcc.supabase.co',
@@ -73,7 +79,7 @@ ${email ? `📧 Email: ${email}` : ''}
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     } else {
-      throw new Error(`Telegram API error: ${JSON.stringify(telegramResult)}`);
+      throw new Error(`Telegram API error: ${JSON.stringify(telegramResults)}`);
     }
 
   } catch (error) {
