@@ -2,6 +2,7 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.50.0';
+import { Resend } from "npm:resend@2.0.0";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -74,15 +75,38 @@ ${email ? `📧 Email: ${email}` : ''}
         console.error('Error updating telegram_sent status:', updateError);
       }
 
+      // Also send email notification via Resend
+      try {
+        const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+        const NOTIFY_EMAIL = 'prorezultat.info@yandex.ru';
+
+        const emailResponse = await resend.emails.send({
+          from: 'PROREZULTAT <onboarding@resend.dev>',
+          to: [NOTIFY_EMAIL],
+          subject: 'Новая заявка с сайта PROREZULTAT',
+          html: `
+            <h2>Новая заявка с сайта PROREZULTAT</h2>
+            <p><strong>Телефон:</strong> ${phone}</p>
+            ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
+            <p><strong>Вопрос:</strong> ${question}</p>
+            <p><strong>Время:</strong> ${new Date().toLocaleString('ru-RU')}</p>
+            <p><strong>ID заявки:</strong> ${requestId}</p>
+          `.trim(),
+        });
+        console.log('Email sent via Resend:', emailResponse);
+      } catch (emailError) {
+        console.error('Error sending email via Resend:', emailError);
+      }
+
       return new Response(
-        JSON.stringify({ success: true, message: 'Уведомление отправлено' }),
+        JSON.stringify({ success: true, message: 'Уведомления отправлены' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
       );
     } else {
       throw new Error(`Telegram API error: ${JSON.stringify(telegramResults)}`);
     }
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error in send-telegram-notification:', error);
     return new Response(
       JSON.stringify({ 
