@@ -79,21 +79,35 @@ ${email ? `📧 Email: ${email}` : ''}
       try {
         const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
         const NOTIFY_EMAIL = 'prorezultat.info@yandex.ru';
+        const FROM_EMAIL = 'PROREZULTAT <onboarding@resend.dev>';
 
-        const emailResponse = await resend.emails.send({
-          from: 'PROREZULTAT <onboarding@resend.dev>',
-          to: [NOTIFY_EMAIL],
-          subject: 'Новая заявка с сайта PROREZULTAT',
-          html: `
+        console.log('Resend config check:', {
+          hasApiKey: Boolean(Deno.env.get('RESEND_API_KEY')),
+          notifyEmail: NOTIFY_EMAIL,
+          from: FROM_EMAIL,
+        });
+
+        const html = `
             <h2>Новая заявка с сайта PROREZULTAT</h2>
             <p><strong>Телефон:</strong> ${phone}</p>
             ${email ? `<p><strong>Email:</strong> ${email}</p>` : ''}
             <p><strong>Вопрос:</strong> ${question}</p>
             <p><strong>Время:</strong> ${new Date().toLocaleString('ru-RU')}</p>
             <p><strong>ID заявки:</strong> ${requestId}</p>
-          `.trim(),
+          `.trim();
+
+        console.log('Prepared email payload (no HTML):', {
+          to: NOTIFY_EMAIL,
+          subject: 'Новая заявка с сайта PROREZULTAT',
         });
-        console.log('Email sent via Resend:', emailResponse);
+
+        const emailResponse = await resend.emails.send({
+          from: FROM_EMAIL,
+          to: [NOTIFY_EMAIL],
+          subject: 'Новая заявка с сайта PROREZULTAT',
+          html,
+        });
+        console.log('Email sent via Resend response:', emailResponse);
       } catch (emailError) {
         console.error('Error sending email via Resend:', emailError);
       }
