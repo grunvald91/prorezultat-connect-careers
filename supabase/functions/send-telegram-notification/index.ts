@@ -78,13 +78,16 @@ ${email ? `📧 Email: ${email}` : ''}
       // Also send email notification via Resend
       try {
         const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
-        const NOTIFY_EMAIL = 'prorezultat.info@yandex.ru';
-        const FROM_EMAIL = 'PROREZULTAT <onboarding@resend.dev>';
+
+        const NOTIFY_EMAIL = Deno.env.get('NOTIFY_EMAIL') || 'prorezultat.info@yandex.ru';
+        const RAW_FROM = Deno.env.get('RESEND_FROM') || '';
+        const FROM_EMAIL = RAW_FROM || 'PROREZULTAT <onboarding@resend.dev>';
 
         console.log('Resend config check:', {
           hasApiKey: Boolean(Deno.env.get('RESEND_API_KEY')),
           notifyEmail: NOTIFY_EMAIL,
           from: FROM_EMAIL,
+          fromUsesOnboarding: FROM_EMAIL.includes('onboarding@resend.dev'),
         });
 
         const html = `
@@ -106,6 +109,7 @@ ${email ? `📧 Email: ${email}` : ''}
           to: [NOTIFY_EMAIL],
           subject: 'Новая заявка с сайта PROREZULTAT',
           html,
+          replyTo: email ? [email] : undefined,
         });
         console.log('Email sent via Resend response:', emailResponse);
       } catch (emailError) {
