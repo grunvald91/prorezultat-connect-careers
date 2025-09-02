@@ -106,37 +106,23 @@ const HRRecruitmentDropdown = () => {
     setIsSubmitting(true);
     
     try {
-      const { data: contactRequest, error } = await supabase
-        .from('contact_requests')
-        .insert({
-          phone: formData.phone,
-          email: formData.email,
-          question: `Запрос на подбор: ${selectedPosition.title}
-Компания: ${formData.company}
-Имя: ${formData.name}
-Дополнительные требования: ${formData.requirements}`
-        })
-        .select()
-        .single();
-
-      if (error) throw error;
-
-      // Отправка уведомления в Telegram
-      await supabase.functions.invoke('send-telegram-notification', {
+      // Отправляем заявку в MySQL через Edge Function
+      const { data: result, error } = await supabase.functions.invoke('send-mysql-notification', {
         body: {
-          requestId: contactRequest.id,
           phone: formData.phone,
           email: formData.email,
-          question: `🔍 Новый запрос на подбор персонала!
+          question: `🔍 Запрос на подбор персонала!
           
 📋 Позиция: ${selectedPosition.title}
 🏢 Компания: ${formData.company}
 👤 Контактное лицо: ${formData.name}
-📞 Телефон: ${formData.phone}
-📧 Email: ${formData.email}
-📝 Требования: ${formData.requirements}`
+📝 Требования: ${formData.requirements}`,
+          company: formData.company,
+          name: formData.name
         }
       });
+
+      if (error) throw error;
 
       toast({
         title: "Заявка отправлена!",

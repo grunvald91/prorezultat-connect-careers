@@ -47,32 +47,11 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     try {
       console.log('Submitting form data:', formData);
 
-      // Сохраняем заявку в базу данных
-      const { data: contactRequest, error: dbError } = await supabase
-        .from('contact_requests')
-        .insert([
-          {
-            phone: formData.phone,
-            email: formData.email || null,
-            question: formData.question,
-          }
-        ])
-        .select()
-        .single();
-
-      if (dbError) {
-        console.error('Database error:', dbError);
-        throw new Error('Ошибка сохранения в базу данных');
-      }
-
-      console.log('Contact request saved:', contactRequest);
-
-      // Отправляем уведомление в Telegram через Edge Function
-      const { data: telegramResult, error: telegramError } = await supabase.functions.invoke(
-        'send-telegram-notification',
+      // Отправляем заявку в MySQL и уведомления через Edge Function
+      const { data: result, error: submitError } = await supabase.functions.invoke(
+        'send-mysql-notification',
         {
           body: {
-            requestId: contactRequest.id,
             phone: formData.phone,
             email: formData.email,
             question: formData.question,
@@ -80,12 +59,12 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
         }
       );
 
-      if (telegramError) {
-        console.error('Telegram notification error:', telegramError);
-        // Не показываем ошибку пользователю, так как заявка уже сохранена
+      if (submitError) {
+        console.error('Submit error:', submitError);
+        throw new Error('Ошибка отправки заявки');
       }
 
-      console.log('Telegram notification result:', telegramResult);
+      console.log('Contact request submitted:', result);
 
       toast({
         title: "Заявка отправлена!",
