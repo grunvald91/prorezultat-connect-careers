@@ -66,11 +66,12 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Отправляем уведомление в Telegram
     const telegramToken = Deno.env.get("TELEGRAM_BOT_TOKEN");
-    const chatIds = ["@vkorsunova", "@igortest123"];
+    const chatIdsEnv = Deno.env.get("TELEGRAM_CHAT_IDS");
+    const chatIds = chatIdsEnv ? chatIdsEnv.split(",").map(id => id.trim()) : [];
 
     let telegramSent = false;
 
-    if (telegramToken) {
+    if (telegramToken && chatIds.length > 0) {
       const message = `🔔 Новая заявка с сайта!
 
 📞 Телефон: ${requestData.phone}

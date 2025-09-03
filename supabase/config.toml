@@ -3,3 +3,6 @@ project_id = "fcxfwtkrwvfbnugcwkcc"
 
 [functions.send-telegram-notification]
 verify_jwt = false
+
+[functions.send-mysql-notification]
+verify_jwt = false
