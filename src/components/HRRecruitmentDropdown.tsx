@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ChevronDown, User, Calculator, Wrench, Scale, Shield } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+// import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 interface RecruitmentPosition {
@@ -106,23 +106,32 @@ const HRRecruitmentDropdown = () => {
     setIsSubmitting(true);
     
     try {
-      // Отправляем заявку в MySQL через Edge Function
-      const { data: result, error } = await supabase.functions.invoke('send-mysql-notification', {
-        body: {
+      // Отправляем заявку на PHP скрипт на Джино
+      const response = await fetch('https://ваш-домен.ru/contact-handler.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
           phone: formData.phone,
           email: formData.email,
+          name: formData.name,
+          company: formData.company,
           question: `🔍 Запрос на подбор персонала!
           
 📋 Позиция: ${selectedPosition.title}
 🏢 Компания: ${formData.company}
 👤 Контактное лицо: ${formData.name}
-📝 Требования: ${formData.requirements}`,
-          company: formData.company,
-          name: formData.name
+📝 Требования: ${formData.requirements}`
         }
       });
 
-      if (error) throw error;
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        console.error('Error:', result);
+        throw new Error(result.error || 'Ошибка при отправке заявки');
+      }
 
       toast({
         title: "Заявка отправлена!",

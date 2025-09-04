@@ -12,7 +12,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+// import { supabase } from "@/integrations/supabase/client";
 
 interface ContactFormProps {
   isOpen: boolean;
@@ -47,21 +47,26 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     try {
       console.log('Submitting form data:', formData);
 
-      // Отправляем заявку в MySQL и уведомления через Edge Function
-      const { data: result, error: submitError } = await supabase.functions.invoke(
-        'send-mysql-notification',
-        {
-          body: {
-            phone: formData.phone,
-            email: formData.email,
-            question: formData.question,
-          }
-        }
-      );
+      // Отправляем заявку на PHP скрипт на Джино
+      const response = await fetch('https://ваш-домен.ru/contact-handler.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          phone: formData.phone,
+          email: formData.email,
+          question: formData.question,
+        })
+      });
 
-      if (submitError) {
-        console.error('Submit error:', submitError);
-        throw new Error('Ошибка отправки заявки');
+      const result = await response.json();
+
+      console.log('PHP script response:', result);
+
+      if (!response.ok || !result.success) {
+        console.error('Error submitting form:', result);
+        throw new Error(result.error || 'Ошибка при отправке заявки');
       }
 
       console.log('Contact request submitted:', result);
