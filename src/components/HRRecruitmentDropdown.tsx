@@ -118,12 +118,12 @@ const HRRecruitmentDropdown = () => {
           name: formData.name,
           company: formData.company,
           question: `🔍 Запрос на подбор персонала!
-          
+
 📋 Позиция: ${selectedPosition.title}
 🏢 Компания: ${formData.company}
 👤 Контактное лицо: ${formData.name}
 📝 Требования: ${formData.requirements}`
-        }
+        })
       });
 
       const result = await response.json();
