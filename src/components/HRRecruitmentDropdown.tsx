@@ -107,7 +107,7 @@ const HRRecruitmentDropdown = () => {
     
     try {
       // Отправляем заявку на PHP скрипт на Джино
-      const response = await fetch('https://ваш-домен.ru/contact-handler.php', {
+      const response = await fetch('/contact-handler.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -47,8 +47,8 @@ const ContactForm = ({ isOpen, onClose }: ContactFormProps) => {
     try {
       console.log('Submitting form data:', formData);
 
-      // Отправляем заявку на PHP скрипт на Джино
-      const response = await fetch('https://ваш-домен.ru/contact-handler.php', {
+      // Отправляем заявку на PHP скрипт на Джино (замените на ваш домен)
+      const response = await fetch('/contact-handler.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
