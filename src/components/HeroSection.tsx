@@ -24,7 +24,7 @@ const HeroSection = () => {
           {/* User's Photo at the beginning */}
           <div className="mb-12 flex justify-center">
             <img 
-              src="/lovable-uploads/86617c4c-bc79-467f-92f4-da07c0dacf6c.png"
+              src="/images/director.png"
               alt="Руководитель PROREZULTAT"
               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover object-center border-4 border-white/30 shadow-lg"
               style={{ objectPosition: 'center 20%' }}
