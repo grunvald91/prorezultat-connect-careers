@@ -15,7 +15,7 @@ const SEOHead = ({
   description = "Открытые вакансии в компании ProRezultat. Карьера, развитие и сильная команда. Присоединяйтесь!",
   canonical = "https://prorezultat-connect-careers.lovable.app/",
   ogTitle = "Работа в ProRezultat",
-  ogDescription = "Посмотрите вакансии и присоединяйтесь к команде ProRezultat.",
+  ogDescription = "Подбираем сотрудников для Вашего бизнеса.",
   structuredData
 }: SEOHeadProps) => {
   return (
