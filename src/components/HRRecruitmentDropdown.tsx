@@ -167,7 +167,7 @@ const HRRecruitmentDropdown = () => {
       </Button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border z-50 max-h-96 overflow-y-auto lg:left-0 lg:right-auto">
+        <div className="absolute top-full right-0 mt-2 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-lg border z-50 max-h-96 overflow-y-auto">
           <div className="p-2">
             {positions.map((position) => (
               <button
